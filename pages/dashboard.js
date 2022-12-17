@@ -26,9 +26,12 @@ const Index = () => {
       tokenFactoryAbi,
       provider
     );
-    const tokens = await tokenFactory.getTokens();
-    console.log(tokens);
-    setTokenList(tokens);
+    try {
+      const tokens = await tokenFactory.getTokens();
+      setTokenList(tokens);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
